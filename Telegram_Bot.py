@@ -1,7 +1,10 @@
+import os
+import logging
+
+from dotenv import load_dotenv
+
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext, Filters
-
-import logging
 
 def start(update: Update, context: CallbackContext):
   update.message.reply_text('Welcome!')
@@ -13,10 +16,12 @@ def unknown(update: Update, context: CallbackContext):
   update.message.reply_text("Sorry, I didn't understand that Command.")
 
 def main():
+  load_dotenv('.env')
+
   logger = logging.getLogger()
   logger.setLevel(logging.DEBUG)
 
-  updater = Updater("XXX", use_context=True)
+  updater = Updater(os.environ["TOKEN"], use_context=True)
 
   dp = updater.dispatcher
   dp.add_handler(CommandHandler("start", start))
