@@ -19,6 +19,13 @@ def help(update: Update, context: CallbackContext):
 def unknown(update: Update, context: CallbackContext):
   update.message.reply_text("Sorry, I can't understand that. See /help for a list of available commands. 😭")
 
+def echo(update: Update, context: CallbackContext):
+  first_name = update.message.from_user.first_name
+  last_name = update.message.from_user.last_name
+  message = update.message.text[0].lower() + update.message.text[1:]
+
+  print(f"💬 {first_name} {last_name} asks: {message}")
+
 def main():
   load_dotenv(".env")
 
@@ -31,6 +38,7 @@ def main():
   dp.add_handler(CommandHandler("start", start))
   dp.add_handler(CommandHandler("help", help))
   dp.add_handler(MessageHandler(Filters.command, unknown))
+  dp.add_handler(MessageHandler(Filters.text, echo))
 
   updater.start_polling()
 
