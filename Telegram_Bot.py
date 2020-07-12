@@ -44,7 +44,6 @@ def echo(update: Update, context: CallbackContext):
   print(f"💬 {first_name} {last_name} asks: {message}")
 
 def error_handler(update: Update, context: CallbackContext):
-  print(context.error)
   print(f"😱 Telegram_Bot.py::error_handler - An exception was raised while handling an update.")
 
 def main():
