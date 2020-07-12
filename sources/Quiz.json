@@ -1,0 +1,67 @@
+[
+  {
+    "question": "Who is Sonic's sidekick?",
+    "options": [
+      "Amy", 
+      "Tails",
+      "Shadow",
+      "Knuckles"
+    ],
+    "correct_option_id": 1,
+    "explanation": null,
+    "explanation_parse_mode": null,
+    "open_period": 120
+  },
+  {
+    "question": "Which of the following countries is within the Eurozone but outside of the Schengen Area?",
+    "options": [
+      "Malta", 
+      "Greece",
+      "Cyprus",
+      "Portugal"
+    ],
+    "correct_option_id": 2,
+    "explanation": null,
+    "explanation_parse_mode": null,
+    "open_period": 120
+  },
+  {
+    "question": "In the television show Breaking Bad, what's the street name of Walter and Jesse's notorious product?",
+    "options": [
+      "Blue Sky", 
+      "Baby Blue",
+      "Rock Candy",
+      "Pure Glass"
+    ],
+    "correct_option_id": 0,
+    "explanation": null,
+    "explanation_parse_mode": null,
+    "open_period": 120
+  },
+  {
+    "question": "What's the name of the first level in Call of Duty: World at War?",
+    "options": [
+      "Ring of Steel", 
+      "Vendetta",
+      "Eviction",
+      "Semper Fi"
+    ],
+    "correct_option_id": 3,
+    "explanation": null,
+    "explanation_parse_mode": null,
+    "open_period": 120
+  },
+  {
+    "question": "Who was the Author of the manga Uzumaki?",
+    "options": [
+      "Junji Ito", 
+      "Noboru Takahashi",
+      "Akira Toriyama",
+      "Masashi Kishimoto"
+    ],
+    "correct_option_id": 0,
+    "explanation": null,
+    "explanation_parse_mode": null,
+    "open_period": 120
+  }
+]
