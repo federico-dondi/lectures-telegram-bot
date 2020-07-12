@@ -9,7 +9,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContex
 def start(update: Update, context: CallbackContext):
   first_name = update.message.from_user.first_name
   last_name = update.message.from_user.last_name
-  reply = f'Hello {first_name} {last_name}. Welcome to lectures Telegram Bot! 🤖'
+  reply = f"Hello {first_name} {last_name}. Welcome to lectures Telegram Bot! 🤖"
 
   update.message.reply_text(reply)
  
@@ -20,7 +20,7 @@ def unknown(update: Update, context: CallbackContext):
   update.message.reply_text("Sorry, I can't understand that. See /help for a list of available commands. 😭")
 
 def main():
-  load_dotenv('.env')
+  load_dotenv(".env")
 
   logger = logging.getLogger()
   logger.setLevel(logging.DEBUG)
