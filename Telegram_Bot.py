@@ -26,6 +26,9 @@ def echo(update: Update, context: CallbackContext):
 
   print(f"💬 {first_name} {last_name} asks: {message}")
 
+def error_handler(update: Update, context: CallbackContext):
+  print(f"⚠ Telegram_Bot.py::error_handler - An exception was raised while handling an update.")
+
 def main():
   load_dotenv(".env")
 
@@ -39,6 +42,7 @@ def main():
   dp.add_handler(CommandHandler("help", help))
   dp.add_handler(MessageHandler(Filters.command, unknown))
   dp.add_handler(MessageHandler(Filters.text, echo))
+  dp.add_error_handler(error_handler)
 
   updater.start_polling()
 
