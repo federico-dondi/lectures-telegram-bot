@@ -17,7 +17,7 @@ def help(update: Update, context: CallbackContext):
   update.message.reply_text("Need some Help?")
 
 def unknown(update: Update, context: CallbackContext):
-  update.message.reply_text("Sorry, I didn't understand that Command.")
+  update.message.reply_text("Sorry, I can't understand that. See /help for a list of available commands. 😭")
 
 def main():
   load_dotenv('.env')
