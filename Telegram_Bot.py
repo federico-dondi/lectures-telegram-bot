@@ -7,7 +7,11 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext, Filters
 
 def start(update: Update, context: CallbackContext):
-  update.message.reply_text('Welcome!')
+  first_name = update.message.from_user.first_name
+  last_name = update.message.from_user.last_name
+  reply = f"Hello {first_name} {last_name}. Welcome to lectures Telegram Bot! See /help for a list of available commands. 🤖"
+
+  update.message.reply_text(reply)
  
 def help(update: Update, context: CallbackContext):
   update.message.reply_text("Need some Help?")
