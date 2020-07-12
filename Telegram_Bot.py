@@ -27,7 +27,7 @@ def echo(update: Update, context: CallbackContext):
   print(f"💬 {first_name} {last_name} asks: {message}")
 
 def error_handler(update: Update, context: CallbackContext):
-  print(f"⚠ Telegram_Bot.py::error_handler - An exception was raised while handling an update.")
+  print(f"😱 Telegram_Bot.py::error_handler - An exception was raised while handling an update.")
 
 def main():
   load_dotenv(".env")
@@ -48,8 +48,6 @@ def main():
 
   # Runs the Telegram Bot until user presses Ctrl-C or the process receives SIGINT, SIGTERM or SIGABRT
   updater.idle()
-
-  pass
 
 if __name__ == "__main__":
   main()
