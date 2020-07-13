@@ -23,14 +23,14 @@ I can help create more engaging and interactive lectures! 🤖
 
 Here's the list of available commands:
 
-**Games:**
+*Games:*
 /quiz - ask a random question
 
-**Survey:**
+*Survey:*
 /vote - save or update your answer
 /votecount - display the results and reset
 
-**Common:**
+*Common:*
 /help - show the commands
 """, parse_mode=ParseMode.MARKDOWN)
 
