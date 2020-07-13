@@ -44,6 +44,29 @@ def vote(update: Update, context: CallbackContext):
 
   votes[id] = vote
 
+def vote_count(update: Update, context: CallbackContext):
+  global votes
+
+  trues = 0
+  falses = 0
+
+  for id in votes:
+    value = votes[id]
+
+    if value:
+      trues += 1
+    else:
+      falses += 1
+
+  print(
+"""📊 Here're the results!
+
+[Yes]: {}
+[No]: {}
+""".format(trues, falses))
+
+  votes = { }
+
 quizes = json.load(open("sources/Quiz.json", "r"))
 
 def quiz(update: Update, context: CallbackContext):
@@ -84,6 +107,7 @@ def main():
   dp.add_handler(CommandHandler("start", start))
   dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("vote", vote))
+  dp.add_handler(CommandHandler("votecount", vote_count))
   dp.add_handler(CommandHandler("quiz", quiz))
   dp.add_handler(MessageHandler(Filters.command, unknown))
   dp.add_handler(MessageHandler(Filters.text, echo))
