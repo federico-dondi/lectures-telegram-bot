@@ -1,14 +1,13 @@
 import os
 import json
+import re
 import random
 import logging
 
 from dotenv import load_dotenv
 
-from telegram import Update, Poll
+from telegram import Update, Poll, ParseMode
 from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext, Filters
-
-quizes = json.load(open("sources/Quiz.json", "r"))
 
 def start(update: Update, context: CallbackContext):
   first_name = update.message.from_user.first_name
@@ -19,6 +18,33 @@ def start(update: Update, context: CallbackContext):
  
 def help(update: Update, context: CallbackContext):
   update.message.reply_text("Need some Help?")
+
+votes = { }
+
+def vote(update: Update, context: CallbackContext):
+  global votes
+
+  vote = None
+  text = update.effective_message.text[6:]
+  id = update.effective_user.id
+
+  if (re.search("yes|Yes|Y", text) != None):
+    vote = True
+  elif (re.search("no|No|N", text) != None):
+    vote = False
+  else:
+    update.message.reply_text("Argument not valid. Allowed values are: `yes`, `no`, `Yes`, `No`, `Y`, `N`. Please, try again. 😞", parse_mode=ParseMode.MARKDOWN) 
+    
+    return
+
+  if id in votes:
+    update.message.reply_text(f"Updated your vote! 👍")
+  else:
+    update.message.reply_text(f"Got your vote! 👍")
+
+  votes[id] = vote
+
+quizes = json.load(open("sources/Quiz.json", "r"))
 
 def quiz(update: Update, context: CallbackContext):
   quiz = random.choice(quizes)
@@ -57,6 +83,7 @@ def main():
   dp = updater.dispatcher
   dp.add_handler(CommandHandler("start", start))
   dp.add_handler(CommandHandler("help", help))
+  dp.add_handler(CommandHandler("vote", vote))
   dp.add_handler(CommandHandler("quiz", quiz))
   dp.add_handler(MessageHandler(Filters.command, unknown))
   dp.add_handler(MessageHandler(Filters.text, echo))
