@@ -17,7 +17,22 @@ def start(update: Update, context: CallbackContext):
   update.message.reply_text(reply)
  
 def help(update: Update, context: CallbackContext):
-  update.message.reply_text("Need some Help?")
+  update.message.reply_text(
+"""
+I can help create more engaging and interactive lectures! 🤖
+
+Here's the list of available commands:
+
+**Games:**
+/quiz - ask a random question
+
+**Survey:**
+/vote - save or update your answer
+/votecount - display the results and reset
+
+**Common:**
+/help - show the commands
+""", parse_mode=ParseMode.MARKDOWN)
 
 votes = { }
 
