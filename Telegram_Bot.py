@@ -3,6 +3,8 @@ import json
 import re
 import random
 import logging
+import sys
+import getopt
 
 from dotenv import load_dotenv
 
@@ -111,6 +113,33 @@ def error_handler(update: Update, context: CallbackContext):
   print(f"😱 Telegram_Bot.py::error_handler - An exception was raised while handling an update.")
 
 def main():
+  script_name = sys.argv[0]
+  script_options = sys.argv[1:]
+
+  VERSION = "1.0.0"
+  HELP = """usage: %s [OPTIONS]
+
+  optional arguments:
+    -h, --help         show this help message and exit
+    -v, --version      show program's version number and exit""" % script_name
+
+  try:
+    arguments, values = getopt.getopt(script_options, "vh", [
+      "version", 
+      "help"
+    ])
+
+    for a, v in arguments:
+      if a in ["-v", "--version"] and len(script_options) == 1:
+        print(VERSION)
+        sys.exit()
+      if a in ["-h", "--help"] and len(script_options) == 1:
+        print(HELP)
+        sys.exit()
+
+  except getopt.error as e:
+    sys.exit()
+
   load_dotenv(".env")
 
   logger = logging.getLogger()
